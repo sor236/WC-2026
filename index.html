@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ЧМ 2026 · Прогнозы | Групповой этап</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 10% 30%, #0a1f1e, #05100f);
+            color: #f0f3f8;
+            line-height: 1.4;
+            scroll-behavior: smooth;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjciIG51bU9jdGF2ZXM9IjMiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZikiIG9wYWNpdHk9IjAuMDYiLz48L3N2Zz4=');
+            background-repeat: repeat;
+            pointer-events: none;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        .app {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+        .hero {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF, #b9fbc0, #2dd4bf);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+        }
+        .hero .sub {
+            font-size: 1rem;
+            color: #b6e6e0;
+            margin-top: 0.5rem;
+        }
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-bottom: 2rem;
+        }
+        .filter-btn {
+            background: rgba(20, 35, 33, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(72, 187, 160, 0.4);
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #e2f2ef;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .filter-btn.active {
+            background: #2dd4bf;
+            border-color: #2dd4bf;
+            color: #05100f;
+            box-shadow: 0 5px 12px rgba(45,212,191,0.3);
+        }
+        .standings {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 1.5rem;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            border: 1px solid rgba(45,212,191,0.3);
+        }
+        .standings h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .standings table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+        }
+        .standings th, .standings td {
+            padding: 0.5rem 0.3rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .standings th {
+            background: rgba(45,212,191,0.2);
+            font-weight: 600;
+        }
+        .team-name {
+            text-align: left;
+            font-weight: 500;
+        }
+        .matches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+        .match-card {
+            background: rgba(12, 27, 25, 0.75);
+            backdrop-filter: blur(12px);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(45,212,191,0.25);
+            transition: transform 0.2s, box-shadow 0.2s;
+            overflow: hidden;
+        }
+        .match-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(45,212,191,0.6);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .card-header {
+            background: rgba(0,0,0,0.4);
+            padding: 0.7rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .group-badge {
+            background: #1e2f2c;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-weight: 700;
+        }
+        .teams {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            gap: 0.5rem;
+        }
+        .team {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 5px;
+            background: rgba(0,0,0,0.3);
+            padding: 0.4rem;
+            border-radius: 2rem;
+            flex: 1;
+            word-break: break-word;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .team i { font-size: 1.2rem; }
+        .vs {
+            background: #2dd4bf20;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-weight: 700;
+        }
+        .score-section {
+            background: rgba(0,0,0,0.3);
+            margin: 0.5rem 1rem;
+            padding: 0.4rem;
+            border-radius: 2rem;
+            text-align: center;
+        }
+        .real-score {
+            font-size: 0.9rem;
+            font-weight: 700;
+            background: #041a17;
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+        }
+        .forecast-title {
+            font-size: 0.65rem;
+            margin: 0.3rem 1rem;
+            color: #8dcfc6;
+        }
+        .experts-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            padding: 0.3rem 1rem 1rem;
+            justify-content: space-between;
+        }
+        .expert-pred {
+            background: #0c1f1c;
+            border-radius: 1.5rem;
+            flex: 1;
+            text-align: center;
+            padding: 0.3rem 0;
+            font-size: 0.7rem;
+        }
+        .expert-name { font-size: 0.65rem; }
+        .expert-score { font-weight: 800; font-family: monospace; }
+        .footer-note {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.7rem;
+            opacity: 0.6;
+        }
+        @media (max-width: 700px) {
+            .app { padding: 1rem; }
+            .team { font-size: 0.75rem; }
+            .expert-score { font-size: 0.8rem; }
+            .standings th, .standings td { font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+    <div class="hero">
+        <h1><i class="fas fa-futbol"></i> ЧМ 2026 · ГРУППОВОЙ ЭТАП</h1>
+        <div class="sub">Матчи ещё не сыграны (счёт TBD) · Прогнозы экспертов (Антон, Георгий, Герман, Олег, Тимур, Юрий)</div>
+    </div>
+    <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-group="all">🌍 Все группы</button>
+        <button class="filter-btn" data-group="A">Группа A</button><button class="filter-btn" data-group="B">Группа B</button>
+        <button class="filter-btn" data-group="C">Группа C</button><button class="filter-btn" data-group="D">Группа D</button>
+        <button class="filter-btn" data-group="E">Группа E</button><button class="filter-btn" data-group="F">Группа F</button>
+        <button class="filter-btn" data-group="G">Группа G</button><button class="filter-btn" data-group="H">Группа H</button>
+        <button class="filter-btn" data-group="I">Группа I</button><button class="filter-btn" data-group="J">Группа J</button>
+        <button class="filter-btn" data-group="K">Группа K</button><button class="filter-btn" data-group="L">Группа L</button>
+    </div>
+    <div id="standingsContainer"></div>
+    <div class="matches-grid" id="matchesContainer"></div>
+    <div class="footer-note">
+        <i class="fas fa-chart-line"></i> Все результаты TBD. Турнирная таблица будет рассчитана после завершения матчей.
+    </div>
+</div>
+<script>
+    // ------------------------------------------------------------------
+    // ПРАВИЛЬНЫЕ ДАННЫЕ: только матчи группового этапа, 4 команды в группе, 6 матчей.
+    // Счёт матча везде TBD (колонки H и I в XLSX пусты).
+    // Прогнозы экспертов: для первых 24 матчей (там, где они были в XLSX), для остальных — прочерки.
+    // Группы A–L, каждая содержит ровно 4 команды.
+    // ------------------------------------------------------------------
+    const matchesData = [
+        // ГРУППА A (Мексика, ЮАР, Южная Корея, Чехия)
+        { group:"A", date:"11.06.2026", time:"22:00", home:"Мексика", away:"ЮАР", pred:["2:3","2:1","3:1","2:0","2:0","3:0"] },
+        { group:"A", date:"12.06.2026", time:"05:00", home:"Южная Корея", away:"Чехия", pred:["1:1","1:2","1:2","1:0","1:1","1:1"] },
+        { group:"A", date:"18.06.2026", time:"19:00", home:"Чехия", away:"ЮАР", pred:null },
+        { group:"A", date:"19.06.2026", time:"04:00", home:"Мексика", away:"Южная Корея", pred:null },
+        { group:"A", date:"25.06.2026", time:"04:00", home:"Мексика", away:"Чехия", pred:null },
+        { group:"A", date:"25.06.2026", time:"04:00", home:"ЮАР", away:"Южная Корея", pred:null },
+        // ГРУППА B (Канада, Босния и Герцеговина, Катар, Швейцария)
+        { group:"B", date:"12.06.2026", time:"22:00", home:"Канада", away:"Босния и Герцеговина", pred:["1:2","1:0","2:1","1:0","2:0","2:1"] },
+        { group:"B", date:"13.06.2026", time:"22:00", home:"Катар", away:"Швейцария", pred:["1:1","1:2","0:3","0:2","0:3","0:2"] },
+        { group:"B", date:"18.06.2026", time:"22:00", home:"Швейцария", away:"Босния и Герцеговина", pred:null },
+        { group:"B", date:"19.06.2026", time:"01:00", home:"Канада", away:"Катар", pred:null },
+        { group:"B", date:"24.06.2026", time:"22:00", home:"Канада", away:"Швейцария", pred:null },
+        { group:"B", date:"24.06.2026", time:"22:00", home:"Босния и Герцеговина", away:"Катар", pred:null },
+        // ГРУППА C (Бразилия, Марокко, Гаити, Шотландия)
+        { group:"C", date:"14.06.2026", time:"01:00", home:"Бразилия", away:"Марокко", pred:["2:1","3:0","2:1","3:0","2:1","3:0"] },
+        { group:"C", date:"14.06.2026", time:"04:00", home:"Гаити", away:"Шотландия", pred:["0:2","0:3","1:3","1:2","0:2","0:4"] },
+        { group:"C", date:"20.06.2026", time:"01:00", home:"Шотландия", away:"Марокко", pred:null },
+        { group:"C", date:"20.06.2026", time:"04:00", home:"Бразилия", away:"Гаити", pred:null },
+        { group:"C", date:"25.06.2026", time:"01:00", home:"Марокко", away:"Гаити", pred:null },
+        { group:"C", date:"25.06.2026", time:"01:00", home:"Шотландия", away:"Бразилия", pred:null },
+        // ГРУППА D (США, Парагвай, Австралия, Турция)
+        { group:"D", date:"13.06.2026", time:"04:00", home:"США", away:"Парагвай", pred:["2:1","2:0","2:0","1:0","2:0","2:0"] },
+        { group:"D", date:"14.06.2026", time:"07:00", home:"Австралия", away:"Турция", pred:["0:3","1:2","1:2","0:2","1:2","1:2"] },
+        { group:"D", date:"19.06.2026", time:"22:00", home:"США", away:"Австралия", pred:null },
+        { group:"D", date:"20.06.2026", time:"07:00", home:"Турция", away:"Парагвай", pred:null },
+        { group:"D", date:"26.06.2026", time:"05:00", home:"США", away:"Турция", pred:null },
+        { group:"D", date:"26.06.2026", time:"05:00", home:"Парагвай", away:"Австралия", pred:null },
+        // ГРУППА E (Германия, Кюрасао, Кот-д’Ивуар, Эквадор)
+        { group:"E", date:"14.06.2026", time:"20:00", home:"Германия", away:"Кюрасао", pred:["7:0","8:0","8:0","3:0","5:0","8:0"] },
+        { group:"E", date:"15.06.2026", time:"02:00", home:"Кот-д’Ивуар", away:"Эквадор", pred:["2:1","3:1","1:1","1:1","1:1","2:2"] },
+        { group:"E", date:"20.06.2026", time:"23:00", home:"Германия", away:"Кот-д’Ивуар", pred:null },
+        { group:"E", date:"21.06.2026", time:"03:00", home:"Эквадор", away:"Кюрасао", pred:null },
+        { group:"E", date:"25.06.2026", time:"23:00", home:"Эквадор", away:"Германия", pred:null },
+        { group:"E", date:"25.06.2026", time:"23:00", home:"Кюрасао", away:"Кот-д’Ивуар", pred:null },
+        // ГРУППА F (Нидерланды, Япония, Швеция, Тунис)
+        { group:"F", date:"14.06.2026", time:"23:00", home:"Нидерланды", away:"Япония", pred:["1:2","2:1","2:1","1:1","2:1","2:1"] },
+        { group:"F", date:"15.06.2026", time:"05:00", home:"Швеция", away:"Тунис", pred:["1:1","2:0","1:0","2:0","1:0","1:0"] },
+        { group:"F", date:"20.06.2026", time:"20:00", home:"Нидерланды", away:"Швеция", pred:null },
+        { group:"F", date:"21.06.2026", time:"07:00", home:"Тунис", away:"Япония", pred:null },
+        { group:"F", date:"26.06.2026", time:"02:00", home:"Тунис", away:"Нидерланды", pred:null },
+        { group:"F", date:"26.06.2026", time:"02:00", home:"Япония", away:"Швеция", pred:null },
+        // ГРУППА G (Бельгия, Египет, Иран, Новая Зеландия)
+        { group:"G", date:"15.06.2026", time:"22:00", home:"Бельгия", away:"Египет", pred:["2:2","3:1","3:1","2:0","2:0","3:1"] },
+        { group:"G", date:"16.06.2026", time:"04:00", home:"Иран", away:"Новая Зеландия", pred:["1:0","2:0","2:0","0:1","1:0","2:1"] },
+        { group:"G", date:"21.06.2026", time:"22:00", home:"Бельгия", away:"Иран", pred:null },
+        { group:"G", date:"22.06.2026", time:"04:00", home:"Новая Зеландия", away:"Египет", pred:null },
+        { group:"G", date:"27.06.2026", time:"06:00", home:"Новая Зеландия", away:"Бельгия", pred:null },
+        { group:"G", date:"27.06.2026", time:"06:00", home:"Египет", away:"Иран", pred:null },
+        // ГРУППА H (Испания, Кабо-Верде, Саудовская Аравия, Уругвай)
+        { group:"H", date:"15.06.2026", time:"19:00", home:"Испания", away:"Кабо-Верде", pred:["6:1","5:0","6:0","3:0","4:0","4:0"] },
+        { group:"H", date:"16.06.2026", time:"01:00", home:"Саудовская Аравия", away:"Уругвай", pred:["0:2","1:3","0:3","0:4","0:2","0:2"] },
+        { group:"H", date:"21.06.2026", time:"19:00", home:"Испания", away:"Саудовская Аравия", pred:null },
+        { group:"H", date:"22.06.2026", time:"01:00", home:"Уругвай", away:"Кабо-Верде", pred:null },
+        { group:"H", date:"27.06.2026", time:"03:00", home:"Уругвай", away:"Испания", pred:null },
+        { group:"H", date:"27.06.2026", time:"03:00", home:"Кабо-Верде", away:"Саудовская Аравия", pred:null },
+        // ГРУППА I (Франция, Сенегал, Ирак, Норвегия)
+        { group:"I", date:"16.06.2026", time:"22:00", home:"Франция", away:"Сенегал", pred:["4:1","3:1","4:1","1:0","2:0","3:1"] },
+        { group:"I", date:"17.06.2026", time:"01:00", home:"Ирак", away:"Норвегия", pred:["0:2","0:2","0:3","0:3","0:2","0:3"] },
+        { group:"I", date:"23.06.2026", time:"00:00", home:"Франция", away:"Ирак", pred:null },
+        { group:"I", date:"23.06.2026", time:"03:00", home:"Норвегия", away:"Сенегал", pred:null },
+        { group:"I", date:"26.06.2026", time:"22:00", home:"Норвегия", away:"Франция", pred:null },
+        { group:"I", date:"26.06.2026", time:"22:00", home:"Сенегал", away:"Ирак", pred:null },
+        // ГРУППА J (Аргентина, Алжир, Австрия, Иордания)
+        { group:"J", date:"17.06.2026", time:"04:00", home:"Аргентина", away:"Алжир", pred:["3:2","4:1","3:1","2:0","2:0","2:0"] },
+        { group:"J", date:"17.06.2026", time:"07:00", home:"Австрия", away:"Иордания", pred:["2:1","1:0","3:0","3:0","3:0","3:1"] },
+        { group:"J", date:"22.06.2026", time:"20:00", home:"Аргентина", away:"Австрия", pred:null },
+        { group:"J", date:"23.06.2026", time:"06:00", home:"Иордания", away:"Алжир", pred:null },
+        { group:"J", date:"28.06.2026", time:"05:00", home:"Алжир", away:"Австрия", pred:null },
+        { group:"J", date:"28.06.2026", time:"05:00", home:"Иордания", away:"Аргентина", pred:null },
+        // ГРУППА K (Португалия, ДР Конго, Узбекистан, Колумбия)
+        { group:"K", date:"17.06.2026", time:"20:00", home:"Португалия", away:"ДР Конго", pred:["3:0","4:0","4:0","2:0","2:0","3:0"] },
+        { group:"K", date:"18.06.2026", time:"05:00", home:"Узбекистан", away:"Колумбия", pred:["1:3","1:2","0:4","1:2","0:2","0:2"] },
+        { group:"K", date:"24.06.2026", time:"05:00", home:"Колумбия", away:"ДР Конго", pred:null },
+        { group:"K", date:"28.06.2026", time:"02:30", home:"Колумбия", away:"Португалия", pred:null },
+        { group:"K", date:"28.06.2026", time:"02:30", home:"ДР Конго", away:"Узбекистан", pred:null },
+        { group:"K", date:"23.06.2026", time:"20:00", home:"Португалия", away:"Узбекистан", pred:null },
+        // ГРУППА L (Англия, Хорватия, Гана, Панама)
+        { group:"L", date:"17.06.2026", time:"23:00", home:"Англия", away:"Хорватия", pred:["2:1","2:2","3:1","1:1","1:1","1:1"] },
+        { group:"L", date:"18.06.2026", time:"02:00", home:"Гана", away:"Панама", pred:["2:2","2:0","2:2","2:1","2:1","2:2"] },
+        { group:"L", date:"24.06.2026", time:"02:00", home:"Панама", away:"Хорватия", pred:null },
+        { group:"L", date:"28.06.2026", time:"00:00", home:"Панама", away:"Англия", pred:null },
+        { group:"L", date:"28.06.2026", time:"00:00", home:"Хорватия", away:"Гана", pred:null },
+        { group:"L", date:"23.06.2026", time:"23:00", home:"Англия", away:"Гана", pred:null }
+    ];
+
+    const experts = ["Антон", "Георгий", "Герман", "Олег", "Тимур", "Юрий"];
+
+    // Построение турнирной таблицы (все очки = 0, т.к. матчи не сыграны)
+    function buildStandings(group) {
+        const groupMatches = matchesData.filter(m => m.group === group);
+        const teamsSet = new Set();
+        groupMatches.forEach(m => { teamsSet.add(m.home); teamsSet.add(m.away); });
+        let teams = Array.from(teamsSet).sort();
+        const stats = {};
+        teams.forEach(team => {
+            stats[team] = { played:0, wins:0, draws:0, losses:0, gf:0, ga:0, points:0 };
+        });
+        // Все матчи имеют счёт TBD, поэтому никаких очков не начисляем
+        let table = teams.map(team => ({ name:team, ...stats[team] }));
+        table.sort((a,b) => b.points - a.points);
+        return table;
+    }
+
+    function renderStandings(group) {
+        const container = document.getElementById("standingsContainer");
+        if (group === "all") { container.innerHTML = ''; return; }
+        const standings = buildStandings(group);
+        if (standings.length === 0) {
+            container.innerHTML = `<div class="standings"><div>Нет данных для группы ${group}</div></div>`;
+            return;
+        }
+        let html = `<div class="standings"><h3><i class="fas fa-table"></i> Группа ${group} · Турнирная таблица (матчи не сыграны)</h3>
+            <table><thead><tr><th>Команда</th><th>И</th><th>В</th><th>Н</th><th>П</th><th>З</th><th>П</th><th>О</th></tr></thead><tbody>`;
+        standings.forEach(t => {
+            html += `<tr><td class="team-name">${t.name}</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>`;
+        });
+        html += `</tbody></table></div>`;
+        container.innerHTML = html;
+    }
+
+    function renderMatches(group) {
+        const container = document.getElementById("matchesContainer");
+        let filtered = group === "all" ? matchesData : matchesData.filter(m => m.group === group);
+        if (filtered.length === 0) {
+            container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:2rem;">Нет матчей в этой группе</div>`;
+            return;
+        }
+        let html = "";
+        for (let match of filtered) {
+            let predictions = match.pred ? match.pred : experts.map(() => "—");
+            while (predictions.length < 6) predictions.push("—");
+            html += `
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="group-badge"><i class="fas fa-users"></i> ГРУППА ${match.group}</span>
+                        <div class="datetime"><i class="far fa-calendar-alt"></i> ${match.date} ${match.time}</div>
+                    </div>
+                    <div class="teams">
+                        <div class="team"><i class="fas fa-shield-alt"></i> ${match.home}</div>
+                        <div class="vs">VS</div>
+                        <div class="team">${match.away} <i class="fas fa-shield-alt"></i></div>
+                    </div>
+                    <div class="score-section">
+                        <div class="real-score"><i class="fas fa-trophy"></i> СЧЕТ: <span>TBD</span></div>
+                    </div>
+                    <div class="forecast-title"><i class="fas fa-chart-simple"></i> ПРОГНОЗЫ ЭКСПЕРТОВ</div>
+                    <div class="experts-grid">
+                        ${experts.map((exp, idx) => `<div class="expert-pred"><div class="expert-name">${exp}</div><div class="expert-score">${predictions[idx]}</div></div>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+        container.innerHTML = html;
+    }
+
+    function refresh(group) {
+        renderStandings(group);
+        renderMatches(group);
+    }
+
+    const btns = document.querySelectorAll(".filter-btn");
+    function setActive(grp) {
+        btns.forEach(btn => {
+            if (btn.getAttribute("data-group") === grp) btn.classList.add("active");
+            else btn.classList.remove("active");
+        });
+    }
+    btns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const grp = btn.getAttribute("data-group");
+            setActive(grp);
+            refresh(grp === "all" ? "all" : grp);
+        });
+    });
+    refresh("all");
+</script>
+</body>
+</html>
