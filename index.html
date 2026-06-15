@@ -51,7 +51,6 @@
         .rank-table th, .rank-table td { padding: 0.6rem 0.3rem; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .rank-table th { background: rgba(45,212,191,0.25); font-weight: 700; }
         .rank-table .expert-name { text-align: left; font-weight: 600; font-size: 1rem; }
-        /* Яркие цвета для призёров */
         .rank-1 { background: #22c55e; color: #000; font-weight: bold; }
         .rank-2 { background: #3b82f6; color: #fff; font-weight: bold; }
         .rank-3 { background: #eab308; color: #000; font-weight: bold; }
@@ -216,63 +215,66 @@
     const EDIT_PASSWORD = "CXZaq1!";
     let isUnlocked = false;
 
-    // ДАННЫЕ ИЗ CSV
-    const csvData = [
+    // ВСЕ ДАННЫЕ ВСТРОЕНЫ (матчи, счета, прогнозы)
+    const matchList = [];
+
+    // Добавляем матчи 1-24 с прогнозами
+    const matchesData = [
         { id:1, group:"A", date:"11.06.2026", time:"22:00", home:"Мексика", away:"ЮАР", homeScore:2, awayScore:0,
-          pred:[[3,1],[2,1],[3,1],[2,0],[2,0],[3,0]] },
+          pred:["3:1","2:1","3:1","2:0","2:0","3:0"] },
         { id:2, group:"A", date:"12.06.2026", time:"05:00", home:"Южная Корея", away:"Чехия", homeScore:2, awayScore:1,
-          pred:[[1,1],[1,2],[1,2],[1,0],[1,1],[1,1]] },
+          pred:["1:1","1:2","1:2","1:0","1:1","1:1"] },
         { id:3, group:"B", date:"12.06.2026", time:"22:00", home:"Канада", away:"Босния и Герцеговина", homeScore:1, awayScore:1,
-          pred:[[1,2],[1,0],[2,1],[1,0],[2,0],[2,1]] },
+          pred:["1:2","1:0","2:1","1:0","2:0","2:1"] },
         { id:4, group:"D", date:"13.06.2026", time:"04:00", home:"США", away:"Парагвай", homeScore:4, awayScore:1,
-          pred:[[2,1],[2,0],[2,0],[1,0],[2,0],[2,0]] },
+          pred:["2:1","2:0","2:0","1:0","2:0","2:0"] },
         { id:5, group:"B", date:"13.06.2026", time:"22:00", home:"Катар", away:"Швейцария", homeScore:1, awayScore:1,
-          pred:[[1,1],[1,2],[0,3],[0,2],[0,3],[0,2]] },
+          pred:["1:1","1:2","0:3","0:2","0:3","0:2"] },
         { id:6, group:"C", date:"14.06.2026", time:"01:00", home:"Бразилия", away:"Марокко", homeScore:1, awayScore:1,
-          pred:[[2,1],[3,0],[2,1],[3,0],[2,1],[3,0]] },
+          pred:["2:1","3:0","2:1","3:0","2:1","3:0"] },
         { id:7, group:"C", date:"14.06.2026", time:"04:00", home:"Гаити", away:"Шотландия", homeScore:0, awayScore:1,
-          pred:[[0,2],[0,3],[1,3],[1,2],[0,2],[0,4]] },
+          pred:["0:2","0:3","1:3","1:2","0:2","0:4"] },
         { id:8, group:"D", date:"14.06.2026", time:"07:00", home:"Австралия", away:"Турция", homeScore:2, awayScore:0,
-          pred:[[0,3],[1,2],[1,2],[0,2],[1,2],[1,2]] },
+          pred:["0:3","1:2","1:2","0:2","1:2","1:2"] },
         { id:9, group:"E", date:"14.06.2026", time:"20:00", home:"Германия", away:"Кюрасао", homeScore:7, awayScore:1,
-          pred:[[7,0],[8,0],[8,0],[3,0],[5,0],[8,0]] },
+          pred:["7:0","8:0","8:0","3:0","5:0","8:0"] },
         { id:10, group:"F", date:"14.06.2026", time:"23:00", home:"Нидерланды", away:"Япония", homeScore:2, awayScore:2,
-          pred:[[1,2],[2,1],[2,1],[1,1],[2,1],[2,1]] },
+          pred:["1:2","2:1","2:1","1:1","2:1","2:1"] },
         { id:11, group:"E", date:"15.06.2026", time:"02:00", home:"Кот-д’Ивуар", away:"Эквадор", homeScore:1, awayScore:0,
-          pred:[[2,1],[3,1],[1,1],[1,1],[1,1],[2,2]] },
+          pred:["2:1","3:1","1:1","1:1","1:1","2:2"] },
         { id:12, group:"F", date:"15.06.2026", time:"05:00", home:"Швеция", away:"Тунис", homeScore:4, awayScore:1,
-          pred:[[1,1],[2,0],[1,0],[2,0],[1,0],[1,0]] },
+          pred:["1:1","2:0","1:0","2:0","1:0","1:0"] },
         { id:13, group:"H", date:"15.06.2026", time:"19:00", home:"Испания", away:"Кабо-Верде", homeScore:null, awayScore:null,
-          pred:[[6,1],[5,0],[6,0],[3,0],[4,0],[4,0]] },
+          pred:["6:1","5:0","6:0","3:0","4:0","4:0"] },
         { id:14, group:"G", date:"15.06.2026", time:"22:00", home:"Бельгия", away:"Египет", homeScore:null, awayScore:null,
-          pred:[[2,2],[3,1],[3,1],[2,0],[2,0],[3,1]] },
+          pred:["2:2","3:1","3:1","2:0","2:0","3:1"] },
         { id:15, group:"H", date:"16.06.2026", time:"01:00", home:"Саудовская Аравия", away:"Уругвай", homeScore:null, awayScore:null,
-          pred:[[0,2],[1,3],[0,3],[0,4],[0,2],[0,2]] },
+          pred:["0:2","1:3","0:3","0:4","0:2","0:2"] },
         { id:16, group:"G", date:"16.06.2026", time:"04:00", home:"Иран", away:"Новая Зеландия", homeScore:null, awayScore:null,
-          pred:[[1,0],[2,0],[2,0],[0,1],[1,0],[2,1]] },
+          pred:["1:0","2:0","2:0","0:1","1:0","2:1"] },
         { id:17, group:"I", date:"16.06.2026", time:"22:00", home:"Франция", away:"Сенегал", homeScore:null, awayScore:null,
-          pred:[[4,1],[3,1],[4,1],[1,0],[2,0],[3,1]] },
+          pred:["4:1","3:1","4:1","1:0","2:0","3:1"] },
         { id:18, group:"I", date:"17.06.2026", time:"01:00", home:"Ирак", away:"Норвегия", homeScore:null, awayScore:null,
-          pred:[[0,2],[0,2],[0,3],[0,3],[0,2],[0,3]] },
+          pred:["0:2","0:2","0:3","0:3","0:2","0:3"] },
         { id:19, group:"J", date:"17.06.2026", time:"04:00", home:"Аргентина", away:"Алжир", homeScore:null, awayScore:null,
-          pred:[[3,2],[4,1],[3,1],[2,0],[2,0],[2,0]] },
+          pred:["3:2","4:1","3:1","2:0","2:0","2:0"] },
         { id:20, group:"J", date:"17.06.2026", time:"07:00", home:"Австрия", away:"Иордания", homeScore:null, awayScore:null,
-          pred:[[2,1],[1,0],[3,0],[3,0],[3,0],[3,1]] },
+          pred:["2:1","1:0","3:0","3:0","3:0","3:1"] },
         { id:21, group:"K", date:"17.06.2026", time:"20:00", home:"Португалия", away:"ДР Конго", homeScore:null, awayScore:null,
-          pred:[[3,0],[4,0],[4,0],[2,0],[2,0],[3,0]] },
+          pred:["3:0","4:0","4:0","2:0","2:0","3:0"] },
         { id:22, group:"L", date:"17.06.2026", time:"23:00", home:"Англия", away:"Хорватия", homeScore:null, awayScore:null,
-          pred:[[2,1],[2,2],[3,1],[1,1],[1,1],[1,1]] },
+          pred:["2:1","2:2","3:1","1:1","1:1","1:1"] },
         { id:23, group:"L", date:"18.06.2026", time:"02:00", home:"Гана", away:"Панама", homeScore:null, awayScore:null,
-          pred:[[2,2],[2,0],[2,2],[2,1],[2,1],[2,2]] },
+          pred:["2:2","2:0","2:2","2:1","2:1","2:2"] },
         { id:24, group:"K", date:"18.06.2026", time:"05:00", home:"Узбекистан", away:"Колумбия", homeScore:null, awayScore:null,
-          pred:[[1,3],[1,2],[0,4],[1,2],[0,2],[0,2]] }
+          pred:["1:3","1:2","0:4","1:2","0:2","0:2"] }
     ];
 
-    const matchList = [...csvData];
-    for (let i = 25; i <= 72; i++) {
-        matchList.push({ id:i, group:"", date:"", time:"", home:"", away:"", homeScore:null, awayScore:null, pred:null });
+    for (let m of matchesData) {
+        matchList.push(m);
     }
 
+    // Матчи 25-72 (без прогнозов, без счетов)
     const groupsMap = {
         25:"A",26:"B",27:"B",28:"A",29:"D",30:"C",31:"C",32:"D",33:"F",34:"E",35:"E",36:"F",
         37:"H",38:"G",39:"H",40:"G",41:"J",42:"I",43:"I",44:"J",45:"K",46:"L",47:"L",48:"K",
@@ -312,17 +314,11 @@
     };
 
     for (let i = 25; i <= 72; i++) {
-        const m = matchList.find(mm => mm.id === i);
-        if (m) {
-            m.group = groupsMap[i];
-            m.date = datesMap[i];
-            m.time = timesMap[i];
-            m.home = teamsMap[i][0];
-            m.away = teamsMap[i][1];
-            m.homeScore = null;
-            m.awayScore = null;
-            m.pred = null;
-        }
+        matchList.push({
+            id: i, group: groupsMap[i], date: datesMap[i], time: timesMap[i],
+            home: teamsMap[i][0], away: teamsMap[i][1],
+            homeScore: null, awayScore: null, pred: null
+        });
     }
 
     const experts = ["Антон", "Георгий", "Герман", "Олег", "Тимур", "Юрий"];
@@ -334,7 +330,8 @@
             try {
                 const parsed = JSON.parse(saved);
                 matchList.forEach(m => {
-                    scores[m.id] = parsed[m.id] !== undefined ? parsed[m.id] : (m.homeScore !== null ? { home: m.homeScore, away: m.awayScore } : null);
+                    if (parsed[m.id] !== undefined) scores[m.id] = parsed[m.id];
+                    else scores[m.id] = (m.homeScore !== null ? { home: m.homeScore, away: m.awayScore } : null);
                 });
             } catch(e) {}
         } else {
@@ -351,8 +348,10 @@
         alert("✅ Счета сохранены!");
     }
 
-    function getPoints(predHome, predAway, realHome, realAway) {
-        if (realHome === undefined || realAway === undefined) return 0;
+    function getPoints(predStr, realHome, realAway) {
+        if (!predStr || predStr === "—") return 0;
+        const [predHome, predAway] = predStr.split(':').map(Number);
+        if (isNaN(predHome) || isNaN(predAway)) return 0;
         if (predHome === realHome && predAway === realAway) return 3;
         const realDiff = realHome - realAway;
         const predDiff = predHome - predAway;
@@ -370,8 +369,7 @@
             if (!real || real.home === undefined) continue;
             if (!m.pred) continue;
             for (let i = 0; i < experts.length; i++) {
-                const [predHome, predAway] = m.pred[i];
-                const pts = getPoints(predHome, predAway, real.home, real.away);
+                const pts = getPoints(m.pred[i], real.home, real.away);
                 if (pts === 3) { stats[i].points += 3; stats[i].exact++; }
                 else if (pts === 2) { stats[i].points += 2; stats[i].diff++; }
                 else if (pts === 1) { stats[i].points += 1; stats[i].outcome++; }
@@ -384,7 +382,7 @@
     function renderExpertsRank() {
         const stats = computeExpertsStats();
         let html = `<h3><i class="fas fa-trophy"></i> 🏆 Рейтинг экспертов (3 — точный счёт, 2 — разница, 1 — исход)</h3>
-            <table class="rank-table"><thead><tr><th>Место</th><th>Эксперт</th><th>Очки</th><th>Точных<br>счетов</th><th>Разниц<br>(2 очка)</th><th>Исходов<br>(1 очко)</th><tr></thead><tbody>`;
+            <table class="rank-table"><thead><tr><th>Место</th><th>Эксперт</th><th>Очки</th><th>Точных<br>счетов</th><th>Разниц<br>(2 очка)</th><th>Исходов<br>(1 очко)</th></tr></thead><tbody>`;
         stats.forEach((exp, idx) => {
             let medalClass = "";
             if (idx === 0) medalClass = "rank-1";
@@ -429,7 +427,8 @@
             <table><thead><tr><th>Команда</th><th>И</th><th>В</th><th>Н</th><th>П</th><th>З</th><th>П</th><th>О</th></tr></thead><tbody>`;
         table.forEach(t => {
             html += `<tr><td class="team-name">${t.name}</td>
-                        <td>${t.played}</td>                        <td>${t.wins}</td>
+                        <td>${t.played}</td>
+                        <td>${t.wins}</td>
                         <td>${t.draws}</td>
                         <td>${t.losses}</td>
                         <td>${t.gf}</td>
@@ -473,7 +472,7 @@
         filtered = filtered.filter(m => m.home);
         let html = '';
         for (let m of filtered) {
-            const pred = m.pred ? m.pred.map(p => `${p[0]}:${p[1]}`) : experts.map(() => '—');
+            const pred = m.pred ? m.pred : experts.map(() => '—');
             const s = scores[m.id];
             const homeVal = s?.home !== undefined ? s.home : '';
             const awayVal = s?.away !== undefined ? s.away : '';
