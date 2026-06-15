@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>ЧМ 2026 · Рейтинг экспертов (защита + сохранение)</title>
+    <title>ЧМ 2026 · Рейтинг экспертов</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -21,7 +21,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjciIG51bU9jdGF2ZXM9IjMiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZikiIG9wYWNpdHk9IjAuMDYiLz48L3N2Zz4=');
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjciIG51bU9jdGF2ZXM9IjMiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZikgb3BhY2l0eT0iMC4wNiIvPjwvc3ZnPg==');
             background-repeat: repeat;
             pointer-events: none;
             opacity: 0.2;
@@ -34,24 +34,9 @@
             margin: 0 auto;
             padding: 2rem 1.5rem 4rem;
         }
-        .hero {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #FFFFFF, #b9fbc0, #2dd4bf);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .hero .sub {
-            font-size: 1rem;
-            color: #b6e6e0;
-            margin-top: 0.5rem;
-        }
-        /* Рейтинг экспертов */
+        .hero { text-align: center; margin-bottom: 2rem; }
+        .hero h1 { font-size: 2.5rem; background: linear-gradient(135deg, #fff, #b9fbc0, #2dd4bf); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .hero .sub { font-size: 1rem; color: #b6e6e0; margin-top: 0.5rem; }
         .experts-rank {
             background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(12px);
@@ -61,43 +46,17 @@
             border: 1px solid rgba(45,212,191,0.4);
             overflow-x: auto;
         }
-        .experts-rank h3 {
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .rank-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.85rem;
-        }
-        .rank-table th, .rank-table td {
-            padding: 0.6rem 0.3rem;
-            text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .rank-table th {
-            background: rgba(45,212,191,0.25);
-            font-weight: 700;
-        }
-        .rank-table .expert-name {
-            text-align: left;
-            font-weight: 600;
-            font-size: 1rem;  /* увеличен шрифт имён экспертов */
-        }
-        .rank-1 { background: linear-gradient(90deg, #ffd70020, transparent); font-weight: bold; }
-        .rank-2 { background: linear-gradient(90deg, #c0c0c020, transparent); }
-        .rank-3 { background: linear-gradient(90deg, #cd7f3220, transparent); }
+        .experts-rank h3 { margin-bottom: 0.8rem; font-size: 1.2rem; }
+        .rank-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        .rank-table th, .rank-table td { padding: 0.6rem 0.3rem; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .rank-table th { background: rgba(45,212,191,0.25); font-weight: 700; }
+        .rank-table .expert-name { text-align: left; font-weight: 600; font-size: 1rem; }
+        /* Яркие цвета для призёров */
+        .rank-1 { background: #22c55e; color: #000; font-weight: bold; }
+        .rank-2 { background: #3b82f6; color: #fff; font-weight: bold; }
+        .rank-3 { background: #eab308; color: #000; font-weight: bold; }
 
-        .filter-bar {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.6rem;
-            margin-bottom: 2rem;
-        }
+        .filter-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-bottom: 2rem; }
         .filter-btn {
             background: rgba(20, 35, 33, 0.7);
             backdrop-filter: blur(8px);
@@ -108,14 +67,8 @@
             font-size: 0.85rem;
             color: #e2f2ef;
             cursor: pointer;
-            transition: 0.2s;
         }
-        .filter-btn.active {
-            background: #2dd4bf;
-            border-color: #2dd4bf;
-            color: #05100f;
-            box-shadow: 0 5px 12px rgba(45,212,191,0.3);
-        }
+        .filter-btn.active { background: #2dd4bf; color: #05100f; }
         .standings {
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(8px);
@@ -125,36 +78,12 @@
             overflow-x: auto;
             border: 1px solid rgba(45,212,191,0.3);
         }
-        .standings h3 {
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .standings table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.8rem;
-        }
-        .standings th, .standings td {
-            padding: 0.5rem 0.3rem;
-            text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .standings th {
-            background: rgba(45,212,191,0.2);
-            font-weight: 600;
-        }
-        .team-name {
-            text-align: left;
-            font-weight: 500;
-        }
-        .matches-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-            gap: 1.5rem;
-        }
+        .standings h3 { margin-bottom: 0.8rem; font-size: 1.2rem; }
+        .standings table { width: 100%; border-collapse: collapse; font-size: 0.8rem; border: 1px solid rgba(255,255,255,0.2); }
+        .standings th, .standings td { padding: 0.5rem 0.3rem; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); }
+        .standings th { background: rgba(45,212,191,0.2); font-weight: 600; }
+        .team-name { text-align: left; font-weight: 500; font-size: 1.1rem; }
+        .matches-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 1.5rem; }
         .match-card {
             background: rgba(12, 27, 25, 0.75);
             backdrop-filter: blur(12px);
@@ -163,10 +92,7 @@
             transition: transform 0.2s, box-shadow 0.2s;
             overflow: hidden;
         }
-        .match-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(45,212,191,0.6);
-        }
+        .match-card:hover { transform: translateY(-3px); }
         .card-header {
             background: rgba(0,0,0,0.4);
             padding: 0.7rem 1rem;
@@ -175,19 +101,8 @@
             font-size: 0.7rem;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .group-badge {
-            background: #1e2f2c;
-            padding: 0.2rem 0.8rem;
-            border-radius: 30px;
-            font-weight: 700;
-        }
-        .teams {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            gap: 0.5rem;
-        }
+        .group-badge { background: #1e2f2c; padding: 0.2rem 0.8rem; border-radius: 30px; font-weight: 700; }
+        .teams { display: flex; justify-content: space-between; align-items: center; padding: 1rem; gap: 0.5rem; }
         .team {
             display: flex;
             flex-direction: column;
@@ -199,16 +114,15 @@
             border-radius: 2rem;
             flex: 1;
             word-break: break-word;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             font-weight: 600;
+            transition: color 0.2s;
         }
-        .team i { font-size: 1.2rem; }
-        .vs {
-            background: #2dd4bf20;
-            padding: 0.2rem 0.8rem;
-            border-radius: 30px;
-            font-weight: 700;
-        }
+        .team.win { color: #4ade80; }
+        .team.loss { color: #f87171; }
+        .team.draw { color: #60a5fa; }
+        .team i { font-size: 1.2rem; color: inherit; }
+        .vs { background: #2dd4bf20; padding: 0.2rem 0.8rem; border-radius: 30px; font-weight: 700; }
         .score-inputs {
             display: flex;
             justify-content: center;
@@ -235,30 +149,9 @@
             background: #1a2a27;
             cursor: not-allowed;
         }
-        .forecast-title {
-            font-size: 0.65rem;
-            margin: 0.3rem 1rem;
-            color: #8dcfc6;
-        }
-        .experts-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            padding: 0.3rem 1rem 1rem;
-            justify-content: space-between;
-        }
-        .expert-pred {
-            background: #0c1f1c;
-            border-radius: 1.5rem;
-            flex: 1;
-            text-align: center;
-            padding: 0.3rem 0;
-            font-size: 0.7rem;
-        }
-        .expert-name { font-size: 0.65rem; }
-        .expert-score { font-weight: 800; font-family: monospace; }
-        
-        /* Нижняя панель с кнопками */
+        .forecast-title { font-size: 0.65rem; margin: 0.3rem 1rem; color: #8dcfc6; }
+        .experts-grid { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0.3rem 1rem 1rem; justify-content: space-between; }
+        .expert-pred { background: #0c1f1c; border-radius: 1.5rem; flex: 1; text-align: center; padding: 0.3rem 0; font-size: 0.7rem; }
         .bottom-panel {
             position: fixed;
             bottom: 0;
@@ -267,60 +160,31 @@
             background: rgba(0,0,0,0.85);
             backdrop-filter: blur(8px);
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
             gap: 1rem;
             padding: 0.6rem;
             border-top: 1px solid #2dd4bf;
             z-index: 100;
-            font-size: 0.8rem;
         }
         .bottom-btn {
-            background: rgba(45, 212, 191, 0.8);
+            background: #ffaa33;
             border: none;
             padding: 0.4rem 1.2rem;
             border-radius: 60px;
             font-weight: 600;
-            font-size: 0.8rem;
-            color: #05100f;
             cursor: pointer;
-            transition: 0.2s;
-        }
-        .bottom-btn.reset {
-            background: rgba(200, 60, 50, 0.9);
-            color: white;
-        }
-        .bottom-btn.unlock {
-            background: #ffaa33;
-            color: #05100f;
-        }
-        .bottom-btn:hover {
-            transform: scale(1.02);
-        }
-        .bottom-btn.disabled {
-            background: #2dd4bf;
-            cursor: default;
-            opacity: 0.7;
-            transform: none;
-        }
-        .bottom-status {
-            color: #aaa;
-            margin-left: 0.5rem;
         }
         .footer-note {
             text-align: center;
             margin-top: 2rem;
             font-size: 0.7rem;
             opacity: 0.6;
-            margin-bottom: 3.5rem;
+            margin-bottom: 3rem;
         }
         @media (max-width: 700px) {
             .app { padding: 1rem; }
-            .team { font-size: 0.75rem; }
-            .expert-score { font-size: 0.8rem; }
+            .team { font-size: 0.9rem; }
             .score-inputs input { width: 55px; }
-            .bottom-panel { gap: 0.5rem; }
-            .bottom-btn { padding: 0.3rem 0.8rem; font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -333,181 +197,184 @@
 
     <div id="expertsRankContainer" class="experts-rank"></div>
 
-    <div class="filter-bar" id="filterBar">
-        <button class="filter-btn active" data-group="all">🌍 Все группы</button>
-        <button class="filter-btn" data-group="A">A</button><button class="filter-btn" data-group="B">B</button>
-        <button class="filter-btn" data-group="C">C</button><button class="filter-btn" data-group="D">D</button>
-        <button class="filter-btn" data-group="E">E</button><button class="filter-btn" data-group="F">F</button>
-        <button class="filter-btn" data-group="G">G</button><button class="filter-btn" data-group="H">H</button>
-        <button class="filter-btn" data-group="I">I</button><button class="filter-btn" data-group="J">J</button>
-        <button class="filter-btn" data-group="K">K</button><button class="filter-btn" data-group="L">L</button>
-    </div>
-
-    <div id="standingsContainer"></div>
+    <div class="filter-bar" id="filterBar"></div>
+    <div id="standingsContainer" class="standings"></div>
     <div class="matches-grid" id="matchesContainer"></div>
     <div class="footer-note">
-        <i class="fas fa-chart-line"></i> Для изменения счетов введите пароль. После ввода счетов нажмите «Сохранить счета».
+        Для изменения счетов введите пароль. После ввода счетов нажмите «Сохранить счета».
     </div>
 </div>
 
-<!-- Нижняя панель со всеми кнопками -->
-<div class="bottom-panel" id="bottomPanel">
-    <button id="unlockBtn" class="bottom-btn unlock"><i class="fas fa-lock"></i> Ввести пароль</button>
+<div class="bottom-panel">
+    <button id="unlockBtn" class="bottom-btn"><i class="fas fa-lock"></i> Ввести пароль</button>
     <button id="saveScoresBtn" class="bottom-btn"><i class="fas fa-save"></i> Сохранить счета</button>
-    <button id="resetScoresBtn" class="bottom-btn reset"><i class="fas fa-undo-alt"></i> Сбросить счета</button>
-    <span id="lockStatus" class="bottom-status">(заблокировано)</span>
+    <button id="resetScoresBtn" class="bottom-btn"><i class="fas fa-undo-alt"></i> Сбросить счета</button>
+    <span id="lockStatus">(заблокировано)</span>
 </div>
 
 <script>
-    // --------------------------------------------------------------
-    // ПАРОЛЬ (измените на свой)
     const EDIT_PASSWORD = "CXZaq1!";
     let isUnlocked = false;
-    // --------------------------------------------------------------
 
-    // БАЗОВЫЕ ДАННЫЕ МАТЧЕЙ (полный список, как в предыдущей версии)
-    const baseMatches = [
-        { id: 1, group:"A", date:"11.06.2026", time:"22:00", home:"Мексика", away:"ЮАР", pred:["2:3","2:1","3:1","2:0","2:0","3:0"] },
-        { id: 2, group:"A", date:"12.06.2026", time:"05:00", home:"Южная Корея", away:"Чехия", pred:["1:1","1:2","1:2","1:0","1:1","1:1"] },
-        { id: 3, group:"A", date:"18.06.2026", time:"19:00", home:"Чехия", away:"ЮАР", pred:null },
-        { id: 4, group:"A", date:"19.06.2026", time:"04:00", home:"Мексика", away:"Южная Корея", pred:null },
-        { id: 5, group:"A", date:"25.06.2026", time:"04:00", home:"Мексика", away:"Чехия", pred:null },
-        { id: 6, group:"A", date:"25.06.2026", time:"04:00", home:"ЮАР", away:"Южная Корея", pred:null },
-        { id: 7, group:"B", date:"12.06.2026", time:"22:00", home:"Канада", away:"Босния и Герцеговина", pred:["1:2","1:0","2:1","1:0","2:0","2:1"] },
-        { id: 8, group:"B", date:"13.06.2026", time:"22:00", home:"Катар", away:"Швейцария", pred:["1:1","1:2","0:3","0:2","0:3","0:2"] },
-        { id: 9, group:"B", date:"18.06.2026", time:"22:00", home:"Швейцария", away:"Босния и Герцеговина", pred:null },
-        { id:10, group:"B", date:"19.06.2026", time:"01:00", home:"Канада", away:"Катар", pred:null },
-        { id:11, group:"B", date:"24.06.2026", time:"22:00", home:"Канада", away:"Швейцария", pred:null },
-        { id:12, group:"B", date:"24.06.2026", time:"22:00", home:"Босния и Герцеговина", away:"Катар", pred:null },
-        { id:13, group:"C", date:"14.06.2026", time:"01:00", home:"Бразилия", away:"Марокко", pred:["2:1","3:0","2:1","3:0","2:1","3:0"] },
-        { id:14, group:"C", date:"14.06.2026", time:"04:00", home:"Гаити", away:"Шотландия", pred:["0:2","0:3","1:3","1:2","0:2","0:4"] },
-        { id:15, group:"C", date:"20.06.2026", time:"01:00", home:"Шотландия", away:"Марокко", pred:null },
-        { id:16, group:"C", date:"20.06.2026", time:"04:00", home:"Бразилия", away:"Гаити", pred:null },
-        { id:17, group:"C", date:"25.06.2026", time:"01:00", home:"Марокко", away:"Гаити", pred:null },
-        { id:18, group:"C", date:"25.06.2026", time:"01:00", home:"Шотландия", away:"Бразилия", pred:null },
-        { id:19, group:"D", date:"13.06.2026", time:"04:00", home:"США", away:"Парагвай", pred:["2:1","2:0","2:0","1:0","2:0","2:0"] },
-        { id:20, group:"D", date:"14.06.2026", time:"07:00", home:"Австралия", away:"Турция", pred:["0:3","1:2","1:2","0:2","1:2","1:2"] },
-        { id:21, group:"D", date:"19.06.2026", time:"22:00", home:"США", away:"Австралия", pred:null },
-        { id:22, group:"D", date:"20.06.2026", time:"07:00", home:"Турция", away:"Парагвай", pred:null },
-        { id:23, group:"D", date:"26.06.2026", time:"05:00", home:"США", away:"Турция", pred:null },
-        { id:24, group:"D", date:"26.06.2026", time:"05:00", home:"Парагвай", away:"Австралия", pred:null },
-        { id:25, group:"E", date:"14.06.2026", time:"20:00", home:"Германия", away:"Кюрасао", pred:["7:0","8:0","8:0","3:0","5:0","8:0"] },
-        { id:26, group:"E", date:"15.06.2026", time:"02:00", home:"Кот-д’Ивуар", away:"Эквадор", pred:["2:1","3:1","1:1","1:1","1:1","2:2"] },
-        { id:27, group:"E", date:"20.06.2026", time:"23:00", home:"Германия", away:"Кот-д’Ивуар", pred:null },
-        { id:28, group:"E", date:"21.06.2026", time:"03:00", home:"Эквадор", away:"Кюрасао", pred:null },
-        { id:29, group:"E", date:"25.06.2026", time:"23:00", home:"Эквадор", away:"Германия", pred:null },
-        { id:30, group:"E", date:"25.06.2026", time:"23:00", home:"Кюрасао", away:"Кот-д’Ивуар", pred:null },
-        { id:31, group:"F", date:"14.06.2026", time:"23:00", home:"Нидерланды", away:"Япония", pred:["1:2","2:1","2:1","1:1","2:1","2:1"] },
-        { id:32, group:"F", date:"15.06.2026", time:"05:00", home:"Швеция", away:"Тунис", pred:["1:1","2:0","1:0","2:0","1:0","1:0"] },
-        { id:33, group:"F", date:"20.06.2026", time:"20:00", home:"Нидерланды", away:"Швеция", pred:null },
-        { id:34, group:"F", date:"21.06.2026", time:"07:00", home:"Тунис", away:"Япония", pred:null },
-        { id:35, group:"F", date:"26.06.2026", time:"02:00", home:"Тунис", away:"Нидерланды", pred:null },
-        { id:36, group:"F", date:"26.06.2026", time:"02:00", home:"Япония", away:"Швеция", pred:null },
-        { id:37, group:"G", date:"15.06.2026", time:"22:00", home:"Бельгия", away:"Египет", pred:["2:2","3:1","3:1","2:0","2:0","3:1"] },
-        { id:38, group:"G", date:"16.06.2026", time:"04:00", home:"Иран", away:"Новая Зеландия", pred:["1:0","2:0","2:0","0:1","1:0","2:1"] },
-        { id:39, group:"G", date:"21.06.2026", time:"22:00", home:"Бельгия", away:"Иран", pred:null },
-        { id:40, group:"G", date:"22.06.2026", time:"04:00", home:"Новая Зеландия", away:"Египет", pred:null },
-        { id:41, group:"G", date:"27.06.2026", time:"06:00", home:"Новая Зеландия", away:"Бельгия", pred:null },
-        { id:42, group:"G", date:"27.06.2026", time:"06:00", home:"Египет", away:"Иран", pred:null },
-        { id:43, group:"H", date:"15.06.2026", time:"19:00", home:"Испания", away:"Кабо-Верде", pred:["6:1","5:0","6:0","3:0","4:0","4:0"] },
-        { id:44, group:"H", date:"16.06.2026", time:"01:00", home:"Саудовская Аравия", away:"Уругвай", pred:["0:2","1:3","0:3","0:4","0:2","0:2"] },
-        { id:45, group:"H", date:"21.06.2026", time:"19:00", home:"Испания", away:"Саудовская Аравия", pred:null },
-        { id:46, group:"H", date:"22.06.2026", time:"01:00", home:"Уругвай", away:"Кабо-Верде", pred:null },
-        { id:47, group:"H", date:"27.06.2026", time:"03:00", home:"Уругвай", away:"Испания", pred:null },
-        { id:48, group:"H", date:"27.06.2026", time:"03:00", home:"Кабо-Верде", away:"Саудовская Аравия", pred:null },
-        { id:49, group:"I", date:"16.06.2026", time:"22:00", home:"Франция", away:"Сенегал", pred:["4:1","3:1","4:1","1:0","2:0","3:1"] },
-        { id:50, group:"I", date:"17.06.2026", time:"01:00", home:"Ирак", away:"Норвегия", pred:["0:2","0:2","0:3","0:3","0:2","0:3"] },
-        { id:51, group:"I", date:"23.06.2026", time:"00:00", home:"Франция", away:"Ирак", pred:null },
-        { id:52, group:"I", date:"23.06.2026", time:"03:00", home:"Норвегия", away:"Сенегал", pred:null },
-        { id:53, group:"I", date:"26.06.2026", time:"22:00", home:"Норвегия", away:"Франция", pred:null },
-        { id:54, group:"I", date:"26.06.2026", time:"22:00", home:"Сенегал", away:"Ирак", pred:null },
-        { id:55, group:"J", date:"17.06.2026", time:"04:00", home:"Аргентина", away:"Алжир", pred:["3:2","4:1","3:1","2:0","2:0","2:0"] },
-        { id:56, group:"J", date:"17.06.2026", time:"07:00", home:"Австрия", away:"Иордания", pred:["2:1","1:0","3:0","3:0","3:0","3:1"] },
-        { id:57, group:"J", date:"22.06.2026", time:"20:00", home:"Аргентина", away:"Австрия", pred:null },
-        { id:58, group:"J", date:"23.06.2026", time:"06:00", home:"Иордания", away:"Алжир", pred:null },
-        { id:59, group:"J", date:"28.06.2026", time:"05:00", home:"Алжир", away:"Австрия", pred:null },
-        { id:60, group:"J", date:"28.06.2026", time:"05:00", home:"Иордания", away:"Аргентина", pred:null },
-        { id:61, group:"K", date:"17.06.2026", time:"20:00", home:"Португалия", away:"ДР Конго", pred:["3:0","4:0","4:0","2:0","2:0","3:0"] },
-        { id:62, group:"K", date:"18.06.2026", time:"05:00", home:"Узбекистан", away:"Колумбия", pred:["1:3","1:2","0:4","1:2","0:2","0:2"] },
-        { id:63, group:"K", date:"24.06.2026", time:"05:00", home:"Колумбия", away:"ДР Конго", pred:null },
-        { id:64, group:"K", date:"28.06.2026", time:"02:30", home:"Колумбия", away:"Португалия", pred:null },
-        { id:65, group:"K", date:"28.06.2026", time:"02:30", home:"ДР Конго", away:"Узбекистан", pred:null },
-        { id:66, group:"K", date:"23.06.2026", time:"20:00", home:"Португалия", away:"Узбекистан", pred:null },
-        { id:67, group:"L", date:"17.06.2026", time:"23:00", home:"Англия", away:"Хорватия", pred:["2:1","2:2","3:1","1:1","1:1","1:1"] },
-        { id:68, group:"L", date:"18.06.2026", time:"02:00", home:"Гана", away:"Панама", pred:["2:2","2:0","2:2","2:1","2:1","2:2"] },
-        { id:69, group:"L", date:"24.06.2026", time:"02:00", home:"Панама", away:"Хорватия", pred:null },
-        { id:70, group:"L", date:"28.06.2026", time:"00:00", home:"Панама", away:"Англия", pred:null },
-        { id:71, group:"L", date:"28.06.2026", time:"00:00", home:"Хорватия", away:"Гана", pred:null },
-        { id:72, group:"L", date:"23.06.2026", time:"23:00", home:"Англия", away:"Гана", pred:null }
+    // ДАННЫЕ ИЗ CSV
+    const csvData = [
+        { id:1, group:"A", date:"11.06.2026", time:"22:00", home:"Мексика", away:"ЮАР", homeScore:2, awayScore:0,
+          pred:[[3,1],[2,1],[3,1],[2,0],[2,0],[3,0]] },
+        { id:2, group:"A", date:"12.06.2026", time:"05:00", home:"Южная Корея", away:"Чехия", homeScore:2, awayScore:1,
+          pred:[[1,1],[1,2],[1,2],[1,0],[1,1],[1,1]] },
+        { id:3, group:"B", date:"12.06.2026", time:"22:00", home:"Канада", away:"Босния и Герцеговина", homeScore:1, awayScore:1,
+          pred:[[1,2],[1,0],[2,1],[1,0],[2,0],[2,1]] },
+        { id:4, group:"D", date:"13.06.2026", time:"04:00", home:"США", away:"Парагвай", homeScore:4, awayScore:1,
+          pred:[[2,1],[2,0],[2,0],[1,0],[2,0],[2,0]] },
+        { id:5, group:"B", date:"13.06.2026", time:"22:00", home:"Катар", away:"Швейцария", homeScore:1, awayScore:1,
+          pred:[[1,1],[1,2],[0,3],[0,2],[0,3],[0,2]] },
+        { id:6, group:"C", date:"14.06.2026", time:"01:00", home:"Бразилия", away:"Марокко", homeScore:1, awayScore:1,
+          pred:[[2,1],[3,0],[2,1],[3,0],[2,1],[3,0]] },
+        { id:7, group:"C", date:"14.06.2026", time:"04:00", home:"Гаити", away:"Шотландия", homeScore:0, awayScore:1,
+          pred:[[0,2],[0,3],[1,3],[1,2],[0,2],[0,4]] },
+        { id:8, group:"D", date:"14.06.2026", time:"07:00", home:"Австралия", away:"Турция", homeScore:2, awayScore:0,
+          pred:[[0,3],[1,2],[1,2],[0,2],[1,2],[1,2]] },
+        { id:9, group:"E", date:"14.06.2026", time:"20:00", home:"Германия", away:"Кюрасао", homeScore:7, awayScore:1,
+          pred:[[7,0],[8,0],[8,0],[3,0],[5,0],[8,0]] },
+        { id:10, group:"F", date:"14.06.2026", time:"23:00", home:"Нидерланды", away:"Япония", homeScore:2, awayScore:2,
+          pred:[[1,2],[2,1],[2,1],[1,1],[2,1],[2,1]] },
+        { id:11, group:"E", date:"15.06.2026", time:"02:00", home:"Кот-д’Ивуар", away:"Эквадор", homeScore:1, awayScore:0,
+          pred:[[2,1],[3,1],[1,1],[1,1],[1,1],[2,2]] },
+        { id:12, group:"F", date:"15.06.2026", time:"05:00", home:"Швеция", away:"Тунис", homeScore:4, awayScore:1,
+          pred:[[1,1],[2,0],[1,0],[2,0],[1,0],[1,0]] },
+        { id:13, group:"H", date:"15.06.2026", time:"19:00", home:"Испания", away:"Кабо-Верде", homeScore:null, awayScore:null,
+          pred:[[6,1],[5,0],[6,0],[3,0],[4,0],[4,0]] },
+        { id:14, group:"G", date:"15.06.2026", time:"22:00", home:"Бельгия", away:"Египет", homeScore:null, awayScore:null,
+          pred:[[2,2],[3,1],[3,1],[2,0],[2,0],[3,1]] },
+        { id:15, group:"H", date:"16.06.2026", time:"01:00", home:"Саудовская Аравия", away:"Уругвай", homeScore:null, awayScore:null,
+          pred:[[0,2],[1,3],[0,3],[0,4],[0,2],[0,2]] },
+        { id:16, group:"G", date:"16.06.2026", time:"04:00", home:"Иран", away:"Новая Зеландия", homeScore:null, awayScore:null,
+          pred:[[1,0],[2,0],[2,0],[0,1],[1,0],[2,1]] },
+        { id:17, group:"I", date:"16.06.2026", time:"22:00", home:"Франция", away:"Сенегал", homeScore:null, awayScore:null,
+          pred:[[4,1],[3,1],[4,1],[1,0],[2,0],[3,1]] },
+        { id:18, group:"I", date:"17.06.2026", time:"01:00", home:"Ирак", away:"Норвегия", homeScore:null, awayScore:null,
+          pred:[[0,2],[0,2],[0,3],[0,3],[0,2],[0,3]] },
+        { id:19, group:"J", date:"17.06.2026", time:"04:00", home:"Аргентина", away:"Алжир", homeScore:null, awayScore:null,
+          pred:[[3,2],[4,1],[3,1],[2,0],[2,0],[2,0]] },
+        { id:20, group:"J", date:"17.06.2026", time:"07:00", home:"Австрия", away:"Иордания", homeScore:null, awayScore:null,
+          pred:[[2,1],[1,0],[3,0],[3,0],[3,0],[3,1]] },
+        { id:21, group:"K", date:"17.06.2026", time:"20:00", home:"Португалия", away:"ДР Конго", homeScore:null, awayScore:null,
+          pred:[[3,0],[4,0],[4,0],[2,0],[2,0],[3,0]] },
+        { id:22, group:"L", date:"17.06.2026", time:"23:00", home:"Англия", away:"Хорватия", homeScore:null, awayScore:null,
+          pred:[[2,1],[2,2],[3,1],[1,1],[1,1],[1,1]] },
+        { id:23, group:"L", date:"18.06.2026", time:"02:00", home:"Гана", away:"Панама", homeScore:null, awayScore:null,
+          pred:[[2,2],[2,0],[2,2],[2,1],[2,1],[2,2]] },
+        { id:24, group:"K", date:"18.06.2026", time:"05:00", home:"Узбекистан", away:"Колумбия", homeScore:null, awayScore:null,
+          pred:[[1,3],[1,2],[0,4],[1,2],[0,2],[0,2]] }
     ];
+
+    const matchList = [...csvData];
+    for (let i = 25; i <= 72; i++) {
+        matchList.push({ id:i, group:"", date:"", time:"", home:"", away:"", homeScore:null, awayScore:null, pred:null });
+    }
+
+    const groupsMap = {
+        25:"A",26:"B",27:"B",28:"A",29:"D",30:"C",31:"C",32:"D",33:"F",34:"E",35:"E",36:"F",
+        37:"H",38:"G",39:"H",40:"G",41:"J",42:"I",43:"I",44:"J",45:"K",46:"L",47:"L",48:"K",
+        49:"B",50:"B",51:"C",52:"C",53:"A",54:"A",55:"E",56:"E",57:"F",58:"F",59:"D",60:"D",
+        61:"I",62:"I",63:"H",64:"H",65:"G",66:"G",67:"L",68:"L",69:"K",70:"K",71:"J",72:"J"
+    };
+    const datesMap = {
+        25:"18.06.2026",26:"18.06.2026",27:"19.06.2026",28:"19.06.2026",29:"19.06.2026",30:"20.06.2026",
+        31:"20.06.2026",32:"20.06.2026",33:"20.06.2026",34:"20.06.2026",35:"21.06.2026",36:"21.06.2026",
+        37:"21.06.2026",38:"21.06.2026",39:"22.06.2026",40:"22.06.2026",41:"22.06.2026",42:"23.06.2026",
+        43:"23.06.2026",44:"23.06.2026",45:"23.06.2026",46:"23.06.2026",47:"24.06.2026",48:"24.06.2026",
+        49:"24.06.2026",50:"24.06.2026",51:"25.06.2026",52:"25.06.2026",53:"25.06.2026",54:"25.06.2026",
+        55:"25.06.2026",56:"25.06.2026",57:"26.06.2026",58:"26.06.2026",59:"26.06.2026",60:"26.06.2026",
+        61:"26.06.2026",62:"26.06.2026",63:"27.06.2026",64:"27.06.2026",65:"27.06.2026",66:"27.06.2026",
+        67:"28.06.2026",68:"28.06.2026",69:"28.06.2026",70:"28.06.2026",71:"28.06.2026",72:"28.06.2026"
+    };
+    const timesMap = {
+        25:"19:00",26:"22:00",27:"01:00",28:"04:00",29:"22:00",30:"01:00",31:"04:00",32:"07:00",33:"20:00",34:"23:00",
+        35:"03:00",36:"07:00",37:"19:00",38:"22:00",39:"01:00",40:"04:00",41:"20:00",42:"00:00",43:"03:00",44:"06:00",
+        45:"20:00",46:"23:00",47:"02:00",48:"05:00",49:"22:00",50:"22:00",51:"01:00",52:"01:00",53:"04:00",54:"04:00",
+        55:"23:00",56:"23:00",57:"02:00",58:"02:00",59:"05:00",60:"05:00",61:"22:00",62:"22:00",63:"03:00",64:"03:00",
+        65:"06:00",66:"06:00",67:"00:00",68:"00:00",69:"02:30",70:"02:30",71:"05:00",72:"05:00"
+    };
+    const teamsMap = {
+        25:["Чехия","ЮАР"],26:["Швейцария","Босния и Герцеговина"],27:["Канада","Катар"],28:["Мексика","Южная Корея"],
+        29:["США","Австралия"],30:["Шотландия","Марокко"],31:["Бразилия","Гаити"],32:["Турция","Парагвай"],
+        33:["Нидерланды","Швеция"],34:["Германия","Кот-д’Ивуар"],35:["Эквадор","Кюрасао"],36:["Тунис","Япония"],
+        37:["Испания","Саудовская Аравия"],38:["Бельгия","Иран"],39:["Уругвай","Кабо-Верде"],40:["Новая Зеландия","Египет"],
+        41:["Аргентина","Австрия"],42:["Франция","Ирак"],43:["Норвегия","Сенегал"],44:["Иордания","Алжир"],
+        45:["Португалия","Узбекистан"],46:["Англия","Гана"],47:["Панама","Хорватия"],48:["Колумбия","ДР Конго"],
+        49:["Канада","Швейцария"],50:["Босния и Герцеговина","Катар"],51:["Марокко","Гаити"],52:["Шотландия","Бразилия"],
+        53:["Мексика","Чехия"],54:["ЮАР","Южная Корея"],55:["Эквадор","Германия"],56:["Кюрасао","Кот-д’Ивуар"],
+        57:["Тунис","Нидерланды"],58:["Япония","Швеция"],59:["США","Турция"],60:["Парагвай","Австралия"],
+        61:["Норвегия","Франция"],62:["Сенегал","Ирак"],63:["Уругвай","Испания"],64:["Кабо-Верде","Саудовская Аравия"],
+        65:["Новая Зеландия","Бельгия"],66:["Египет","Иран"],67:["Панама","Англия"],68:["Хорватия","Гана"],
+        69:["Колумбия","Португалия"],70:["ДР Конго","Узбекистан"],71:["Алжир","Австрия"],72:["Иордания","Аргентина"]
+    };
+
+    for (let i = 25; i <= 72; i++) {
+        const m = matchList.find(mm => mm.id === i);
+        if (m) {
+            m.group = groupsMap[i];
+            m.date = datesMap[i];
+            m.time = timesMap[i];
+            m.home = teamsMap[i][0];
+            m.away = teamsMap[i][1];
+            m.homeScore = null;
+            m.awayScore = null;
+            m.pred = null;
+        }
+    }
 
     const experts = ["Антон", "Георгий", "Герман", "Олег", "Тимур", "Юрий"];
     let scores = {};
 
-    function loadScoresFromLocalStorage() {
+    function loadScores() {
         const saved = localStorage.getItem("wc2026_scores");
         if (saved) {
             try {
                 const parsed = JSON.parse(saved);
-                baseMatches.forEach(m => {
-                    if (parsed[m.id] !== undefined) scores[m.id] = parsed[m.id];
-                    else scores[m.id] = null;
+                matchList.forEach(m => {
+                    scores[m.id] = parsed[m.id] !== undefined ? parsed[m.id] : (m.homeScore !== null ? { home: m.homeScore, away: m.awayScore } : null);
                 });
-            } catch(e) { console.warn(e); }
+            } catch(e) {}
         } else {
-            baseMatches.forEach(m => { scores[m.id] = null; });
+            matchList.forEach(m => {
+                scores[m.id] = (m.homeScore !== null && m.awayScore !== null) ? { home: m.homeScore, away: m.awayScore } : null;
+            });
         }
     }
 
-    function saveScoresToLocalStorage() {
+    function saveScores() {
         const toSave = {};
-        for (let id in scores) {
-            if (scores[id] !== null) toSave[id] = scores[id];
-        }
+        for (let id in scores) if (scores[id]) toSave[id] = scores[id];
         localStorage.setItem("wc2026_scores", JSON.stringify(toSave));
-        // краткое уведомление
-        const msg = document.createElement("div");
-        msg.textContent = "✅ Счета сохранены!";
-        msg.style.position = "fixed";
-        msg.style.bottom = "70px";
-        msg.style.left = "50%";
-        msg.style.transform = "translateX(-50%)";
-        msg.style.background = "#2dd4bf";
-        msg.style.color = "#05100f";
-        msg.style.padding = "0.3rem 1rem";
-        msg.style.borderRadius = "40px";
-        msg.style.fontSize = "0.8rem";
-        msg.style.zIndex = "200";
-        document.body.appendChild(msg);
-        setTimeout(() => msg.remove(), 2000);
+        alert("✅ Счета сохранены!");
     }
 
-    function getPoints(predStr, realHome, realAway) {
-        if (!predStr || predStr === "—") return 0;
-        const [predHome, predAway] = predStr.split(':').map(Number);
-        if (isNaN(predHome) || isNaN(predAway)) return 0;
+    function getPoints(predHome, predAway, realHome, realAway) {
+        if (realHome === undefined || realAway === undefined) return 0;
         if (predHome === realHome && predAway === realAway) return 3;
         const realDiff = realHome - realAway;
         const predDiff = predHome - predAway;
         if (realDiff === predDiff) return 2;
-        const realOutcome = (realHome > realAway) ? 1 : (realHome === realAway ? 0 : -1);
-        const predOutcome = (predHome > predAway) ? 1 : (predHome === predAway ? 0 : -1);
+        const realOutcome = realHome > realAway ? 1 : (realHome === realAway ? 0 : -1);
+        const predOutcome = predHome > predAway ? 1 : (predHome === predAway ? 0 : -1);
         if (realOutcome === predOutcome) return 1;
         return 0;
     }
 
     function computeExpertsStats() {
         let stats = experts.map(name => ({ name, points: 0, exact: 0, diff: 0, outcome: 0 }));
-        for (let match of baseMatches) {
-            const score = scores[match.id];
-            if (!score || score.home === undefined || score.away === undefined) continue;
-            const realHome = score.home, realAway = score.away;
-            if (!match.pred) continue;
+        for (let m of matchList) {
+            const real = scores[m.id];
+            if (!real || real.home === undefined) continue;
+            if (!m.pred) continue;
             for (let i = 0; i < experts.length; i++) {
-                const pts = getPoints(match.pred[i], realHome, realAway);
-                if (pts === 3) { stats[i].points += 3; stats[i].exact += 1; }
-                else if (pts === 2) { stats[i].points += 2; stats[i].diff += 1; }
-                else if (pts === 1) { stats[i].points += 1; stats[i].outcome += 1; }
+                const [predHome, predAway] = m.pred[i];
+                const pts = getPoints(predHome, predAway, real.home, real.away);
+                if (pts === 3) { stats[i].points += 3; stats[i].exact++; }
+                else if (pts === 2) { stats[i].points += 2; stats[i].diff++; }
+                else if (pts === 1) { stats[i].points += 1; stats[i].outcome++; }
             }
         }
         stats.sort((a,b) => b.points - a.points || b.exact - a.exact || b.diff - a.diff);
@@ -515,192 +382,191 @@
     }
 
     function renderExpertsRank() {
-        const container = document.getElementById("expertsRankContainer");
         const stats = computeExpertsStats();
         let html = `<h3><i class="fas fa-trophy"></i> 🏆 Рейтинг экспертов (3 — точный счёт, 2 — разница, 1 — исход)</h3>
-            <table class="rank-table"><thead><tr><th>Место</th><th>Эксперт</th><th>Очки</th><th>Точных<br>счетов</th><th>Разниц<br>(2 очка)</th><th>Исходов<br>(1 очко)</th></tr></thead><tbody>`;
+            <table class="rank-table"><thead><tr><th>Место</th><th>Эксперт</th><th>Очки</th><th>Точных<br>счетов</th><th>Разниц<br>(2 очка)</th><th>Исходов<br>(1 очко)</th><tr></thead><tbody>`;
         stats.forEach((exp, idx) => {
-            let medalClass = (idx === 0) ? "rank-1" : (idx === 1) ? "rank-2" : (idx === 2) ? "rank-3" : "";
+            let medalClass = "";
+            if (idx === 0) medalClass = "rank-1";
+            else if (idx === 1) medalClass = "rank-2";
+            else if (idx === 2) medalClass = "rank-3";
             html += `<tr class="${medalClass}"><td>${idx+1}</td><td class="expert-name">${exp.name}</td>
-                     <td><strong>${exp.points}</strong></td><td>${exp.exact}</td><td>${exp.diff}</td><td>${exp.outcome}</td></tr>`;
+                     <td><strong>${exp.points}</strong></td>
+                      <td>${exp.exact}</td>
+                      <td>${exp.diff}</td>
+                      <td>${exp.outcome}</td>
+                    </tr>`;
         });
         html += `</tbody></table>`;
-        container.innerHTML = html;
+        document.getElementById('expertsRankContainer').innerHTML = html;
     }
 
     function computeStandings(group) {
-        const groupMatches = baseMatches.filter(m => m.group === group);
-        const teamsSet = new Set();
-        groupMatches.forEach(m => { teamsSet.add(m.home); teamsSet.add(m.away); });
-        let teams = Array.from(teamsSet).sort();
+        const groupMatches = matchList.filter(m => m.group === group);
+        const teams = [...new Set(groupMatches.flatMap(m => [m.home, m.away]))].filter(t => t);
         const stats = {};
-        teams.forEach(team => { stats[team] = { played:0, wins:0, draws:0, losses:0, gf:0, ga:0, points:0 }; });
+        teams.forEach(t => stats[t] = { played:0, wins:0, draws:0, losses:0, gf:0, ga:0, pts:0 });
         groupMatches.forEach(m => {
-            const score = scores[m.id];
-            if (score && score.home !== undefined && score.away !== undefined) {
-                const hg = score.home, ag = score.away;
-                const home = m.home, away = m.away;
-                stats[home].gf += hg; stats[home].ga += ag;
-                stats[away].gf += ag; stats[away].ga += hg;
-                stats[home].played++; stats[away].played++;
-                if (hg > ag) { stats[home].wins++; stats[home].points += 3; stats[away].losses++; }
-                else if (hg < ag) { stats[away].wins++; stats[away].points += 3; stats[home].losses++; }
-                else { stats[home].draws++; stats[away].draws++; stats[home].points += 1; stats[away].points += 1; }
+            const s = scores[m.id];
+            if (s && s.home !== undefined && s.away !== undefined) {
+                const hg = s.home, ag = s.away;
+                stats[m.home].gf += hg; stats[m.home].ga += ag;
+                stats[m.away].gf += ag; stats[m.away].ga += hg;
+                stats[m.home].played++; stats[m.away].played++;
+                if (hg > ag) { stats[m.home].wins++; stats[m.home].pts += 3; stats[m.away].losses++; }
+                else if (hg < ag) { stats[m.away].wins++; stats[m.away].pts += 3; stats[m.home].losses++; }
+                else { stats[m.home].draws++; stats[m.away].draws++; stats[m.home].pts++; stats[m.away].pts++; }
             }
         });
-        let table = teams.map(team => ({ name:team, ...stats[team] }));
-        table.sort((a,b) => b.points - a.points || (b.gf - b.ga) - (a.gf - a.ga) || b.gf - a.gf);
-        return table;
+        return teams.map(name => ({ name, ...stats[name] })).sort((a,b) => b.pts - a.pts || (b.gf - b.ga) - (a.gf - a.ga) || b.gf - a.gf);
     }
 
-    function renderStandings(group) {
-        const container = document.getElementById("standingsContainer");
-        if (group === "all") { container.innerHTML = ''; return; }
-        const standings = computeStandings(group);
-        if (!standings.length) return;
-        let html = `<div class="standings"><h3><i class="fas fa-table"></i> Группа ${group} · Турнирная таблица</h3>
+    function renderStandings() {
+        const active = document.querySelector('.filter-btn.active')?.getAttribute('data-group');
+        if (!active || active === 'all') { document.getElementById('standingsContainer').innerHTML = ''; return; }
+        const table = computeStandings(active);
+        let html = `<h3><i class="fas fa-table"></i> Группа ${active} · Турнирная таблица</h3>
             <table><thead><tr><th>Команда</th><th>И</th><th>В</th><th>Н</th><th>П</th><th>З</th><th>П</th><th>О</th></tr></thead><tbody>`;
-        standings.forEach(t => {
-            html += `<tr><td class="team-name">${t.name}</td><td>${t.played}</td><td>${t.wins}</td><td>${t.draws}</td><td>${t.losses}</td><td>${t.gf}</td><td>${t.ga}</td><td>${t.points}</td></tr>`;
+        table.forEach(t => {
+            html += `<tr><td class="team-name">${t.name}</td>
+                        <td>${t.played}</td>                        <td>${t.wins}</td>
+                        <td>${t.draws}</td>
+                        <td>${t.losses}</td>
+                        <td>${t.gf}</td>
+                        <td>${t.ga}</td>
+                        <td><strong>${t.pts}</strong></td>
+                    </tr>`;
         });
         html += `</tbody></table></div>`;
-        container.innerHTML = html;
+        document.getElementById('standingsContainer').innerHTML = html;
     }
 
-    function renderMatches(group) {
-        const container = document.getElementById("matchesContainer");
-        let filtered = group === "all" ? baseMatches : baseMatches.filter(m => m.group === group);
-        if (filtered.length === 0) {
-            container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:2rem;">Нет матчей в этой группе</div>`;
-            return;
+    function updateTeamColors() {
+        const active = document.querySelector('.filter-btn.active')?.getAttribute('data-group') || 'all';
+        let filtered = active === 'all' ? matchList : matchList.filter(m => m.group === active);
+        filtered = filtered.filter(m => m.home);
+        for (let m of filtered) {
+            const s = scores[m.id];
+            const homeDiv = document.querySelector(`.match-card[data-id='${m.id}'] .team:first-child`);
+            const awayDiv = document.querySelector(`.match-card[data-id='${m.id}'] .team:last-child`);
+            if (!homeDiv || !awayDiv) continue;
+            homeDiv.classList.remove('win', 'loss', 'draw');
+            awayDiv.classList.remove('win', 'loss', 'draw');
+            if (s && s.home !== undefined && s.away !== undefined) {
+                if (s.home > s.away) {
+                    homeDiv.classList.add('win');
+                    awayDiv.classList.add('loss');
+                } else if (s.home < s.away) {
+                    homeDiv.classList.add('loss');
+                    awayDiv.classList.add('win');
+                } else {
+                    homeDiv.classList.add('draw');
+                    awayDiv.classList.add('draw');
+                }
+            }
         }
-        let html = "";
-        for (let match of filtered) {
-            let predictions = match.pred ? match.pred : experts.map(() => "—");
-            while (predictions.length < 6) predictions.push("—");
-            const currentScore = scores[match.id];
-            const homeVal = (currentScore && currentScore.home !== undefined) ? currentScore.home : '';
-            const awayVal = (currentScore && currentScore.away !== undefined) ? currentScore.away : '';
+    }
+
+    function renderMatches() {
+        const active = document.querySelector('.filter-btn.active')?.getAttribute('data-group') || 'all';
+        let filtered = active === 'all' ? matchList : matchList.filter(m => m.group === active);
+        filtered = filtered.filter(m => m.home);
+        let html = '';
+        for (let m of filtered) {
+            const pred = m.pred ? m.pred.map(p => `${p[0]}:${p[1]}`) : experts.map(() => '—');
+            const s = scores[m.id];
+            const homeVal = s?.home !== undefined ? s.home : '';
+            const awayVal = s?.away !== undefined ? s.away : '';
             html += `
-                <div class="match-card" data-match-id="${match.id}">
+                <div class="match-card" data-id="${m.id}">
                     <div class="card-header">
-                        <span class="group-badge"><i class="fas fa-users"></i> ГРУППА ${match.group}</span>
-                        <div class="datetime"><i class="far fa-calendar-alt"></i> ${match.date} ${match.time}</div>
+                        <span class="group-badge">ГРУППА ${m.group}</span>
+                        <span>${m.date} ${m.time}</span>
                     </div>
                     <div class="teams">
-                        <div class="team"><i class="fas fa-shield-alt"></i> ${match.home}</div>
+                        <div class="team"><i class="fas fa-shield-alt"></i> ${m.home}</div>
                         <div class="vs">VS</div>
-                        <div class="team">${match.away} <i class="fas fa-shield-alt"></i></div>
+                        <div class="team">${m.away} <i class="fas fa-shield-alt"></i></div>
                     </div>
                     <div class="score-inputs">
-                        <input type="number" class="home-score" placeholder="0" value="${homeVal}" step="1" min="0" ${!isUnlocked ? 'disabled' : ''}>
-                        <span style="font-weight:bold">:</span>
-                        <input type="number" class="away-score" placeholder="0" value="${awayVal}" step="1" min="0" ${!isUnlocked ? 'disabled' : ''}>
+                        <input type="number" class="home-score" value="${homeVal}" placeholder="0" ${!isUnlocked ? 'disabled' : ''}>
+                        <span>:</span>
+                        <input type="number" class="away-score" value="${awayVal}" placeholder="0" ${!isUnlocked ? 'disabled' : ''}>
                     </div>
-                    <div class="forecast-title"><i class="fas fa-chart-simple"></i> ПРОГНОЗЫ ЭКСПЕРТОВ</div>
+                    <div class="forecast-title">ПРОГНОЗЫ ЭКСПЕРТОВ</div>
                     <div class="experts-grid">
-                        ${experts.map((exp, idx) => `<div class="expert-pred"><div class="expert-name">${exp}</div><div class="expert-score">${predictions[idx]}</div></div>`).join('')}
+                        ${experts.map((exp, idx) => `<div class="expert-pred"><div>${exp}</div><div>${pred[idx]}</div></div>`).join('')}
                     </div>
                 </div>
             `;
         }
-        container.innerHTML = html;
+        document.getElementById('matchesContainer').innerHTML = html;
+        updateTeamColors();
 
         if (isUnlocked) {
-            const cards = document.querySelectorAll('.match-card');
-            cards.forEach(card => {
-                const id = parseInt(card.getAttribute('data-match-id'));
-                const homeInput = card.querySelector('.home-score');
-                const awayInput = card.querySelector('.away-score');
+            document.querySelectorAll('.match-card').forEach(card => {
+                const id = parseInt(card.dataset.id);
+                const homeInp = card.querySelector('.home-score');
+                const awayInp = card.querySelector('.away-score');
                 const update = () => {
-                    const hv = homeInput.value === '' ? undefined : parseInt(homeInput.value);
-                    const av = awayInput.value === '' ? undefined : parseInt(awayInput.value);
-                    if (hv !== undefined && av !== undefined && !isNaN(hv) && !isNaN(av)) {
-                        scores[id] = { home: hv, away: av };
-                    } else {
-                        scores[id] = null;
-                    }
+                    const hv = homeInp.value === '' ? undefined : parseInt(homeInp.value);
+                    const av = awayInp.value === '' ? undefined : parseInt(awayInp.value);
+                    scores[id] = (hv !== undefined && av !== undefined && !isNaN(hv) && !isNaN(av)) ? { home: hv, away: av } : null;
                     renderExpertsRank();
-                    const activeGroup = document.querySelector('.filter-btn.active').getAttribute('data-group');
-                    if (activeGroup !== 'all') renderStandings(activeGroup);
-                    else document.getElementById("standingsContainer").innerHTML = '';
+                    renderStandings();
+                    updateTeamColors();
                 };
-                homeInput.addEventListener('input', update);
-                awayInput.addEventListener('input', update);
+                homeInp.addEventListener('input', update);
+                awayInp.addEventListener('input', update);
             });
         }
     }
 
-    function resetAllScores() {
-        if (!isUnlocked) {
-            alert("Редактирование заблокировано. Введите пароль.");
-            return;
-        }
-        baseMatches.forEach(m => { scores[m.id] = null; });
-        saveScoresToLocalStorage();
-        const activeGroup = document.querySelector('.filter-btn.active').getAttribute('data-group');
-        renderMatches(activeGroup);
-        renderExpertsRank();
-        if (activeGroup !== 'all') renderStandings(activeGroup);
-        else document.getElementById("standingsContainer").innerHTML = '';
+    function buildFilters() {
+        const groups = [...new Set(matchList.map(m => m.group))].filter(g => g);
+        const container = document.getElementById('filterBar');
+        container.innerHTML = `<button class="filter-btn active" data-group="all">🌍 Все группы</button>` +
+            groups.map(g => `<button class="filter-btn" data-group="${g}">Группа ${g}</button>`).join('');
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderMatches();
+                renderStandings();
+            });
+        });
     }
 
-    function refresh(group) {
-        renderMatches(group);
+    function resetAll() {
+        if (!isUnlocked) { alert("Редактирование заблокировано. Введите пароль."); return; }
+        matchList.forEach(m => {
+            scores[m.id] = (m.homeScore !== null && m.awayScore !== null) ? { home: m.homeScore, away: m.awayScore } : null;
+        });
+        saveScores();
+        renderMatches();
+        renderStandings();
         renderExpertsRank();
-        if (group !== 'all') renderStandings(group);
-        else document.getElementById("standingsContainer").innerHTML = '';
     }
 
-    // --- Пароль (нижняя панель) ---
-    function unlockEditor() {
-        const pwd = prompt("Введите пароль для редактирования счетов:");
+    function unlock() {
+        const pwd = prompt("Введите пароль:");
         if (pwd === EDIT_PASSWORD) {
             isUnlocked = true;
-            const unlockBtn = document.getElementById("unlockBtn");
-            const statusSpan = document.getElementById("lockStatus");
-            unlockBtn.innerHTML = '<i class="fas fa-check"></i> Режим активен';
-            unlockBtn.classList.add("disabled");
-            unlockBtn.disabled = true;
-            statusSpan.innerHTML = "(разблокировано)";
-            statusSpan.style.color = "#2dd4bf";
-            const activeGroup = document.querySelector('.filter-btn.active').getAttribute('data-group');
-            refresh(activeGroup === "all" ? "all" : activeGroup);
-        } else if (pwd !== null) {
-            alert("Неверный пароль! Доступ запрещён.");
-        }
+            document.getElementById('unlockBtn').innerHTML = '<i class="fas fa-check"></i> Режим активен';
+            document.getElementById('lockStatus').innerHTML = '(разблокировано)';
+            renderMatches();
+        } else if (pwd) alert("Неверный пароль!");
     }
 
-    // --- Сохранение и сброс через нижние кнопки ---
-    document.getElementById("saveScoresBtn").addEventListener("click", () => {
-        if (!isUnlocked) {
-            alert("Редактирование заблокировано. Сначала введите пароль.");
-            return;
-        }
-        saveScoresToLocalStorage();
-    });
-    document.getElementById("resetScoresBtn").addEventListener("click", resetAllScores);
-    document.getElementById("unlockBtn").addEventListener("click", unlockEditor);
+    document.getElementById('unlockBtn').addEventListener('click', unlock);
+    document.getElementById('saveScoresBtn').addEventListener('click', () => { if(isUnlocked) saveScores(); else alert("Введите пароль!"); });
+    document.getElementById('resetScoresBtn').addEventListener('click', resetAll);
 
-    // Фильтры групп
-    const btns = document.querySelectorAll(".filter-btn");
-    function setActive(grp) {
-        btns.forEach(btn => {
-            if (btn.getAttribute("data-group") === grp) btn.classList.add("active");
-            else btn.classList.remove("active");
-        });
-    }
-    btns.forEach(btn => {
-        btn.addEventListener("click", () => {
-            const grp = btn.getAttribute("data-group");
-            setActive(grp);
-            refresh(grp === "all" ? "all" : grp);
-        });
-    });
-
-    // Старт
-    loadScoresFromLocalStorage();
-    refresh("all");
+    loadScores();
+    buildFilters();
+    renderExpertsRank();
+    renderMatches();
+    renderStandings();
 </script>
 </body>
 </html>
